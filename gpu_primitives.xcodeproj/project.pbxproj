@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C52C32182F02FC2100EC88DF /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52C32172F02FC2100EC88DF /* Metal.framework */; };
+		C52C321A2F02FC3200EC88DF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52C32192F02FC3200EC88DF /* QuartzCore.framework */; };
+		C52C321C2F02FC3900EC88DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52C321B2F02FC3900EC88DF /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C52C320A2F02FBDD00EC88DF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,12 +26,20 @@
 
 /* Begin PBXFileReference section */
 		C52C320C2F02FBDD00EC88DF /* gpu_primitives */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpu_primitives; sourceTree = BUILT_PRODUCTS_DIR; };
+		C52C32172F02FC2100EC88DF /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		C52C32192F02FC3200EC88DF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C52C321B2F02FC3900EC88DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C52C320E2F02FBDD00EC88DF /* gpu_primitives */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = gpu_primitives;
+			sourceTree = "<group>";
+		};
+		C59849022F0303A30066E5FE /* metal-cpp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "metal-cpp";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -35,6 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52C32182F02FC2100EC88DF /* Metal.framework in Frameworks */,
+				C52C321C2F02FC3900EC88DF /* Foundation.framework in Frameworks */,
+				C52C321A2F02FC3200EC88DF /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +61,9 @@
 		C52C32032F02FBDD00EC88DF = {
 			isa = PBXGroup;
 			children = (
+				C59849022F0303A30066E5FE /* metal-cpp */,
 				C52C320E2F02FBDD00EC88DF /* gpu_primitives */,
+				C52C32162F02FC2100EC88DF /* Frameworks */,
 				C52C320D2F02FBDD00EC88DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +74,16 @@
 				C52C320C2F02FBDD00EC88DF /* gpu_primitives */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C52C32162F02FC2100EC88DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C52C321B2F02FC3900EC88DF /* Foundation.framework */,
+				C52C32192F02FC3200EC88DF /* QuartzCore.framework */,
+				C52C32172F02FC2100EC88DF /* Metal.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +103,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				C52C320E2F02FBDD00EC88DF /* gpu_primitives */,
+				C59849022F0303A30066E5FE /* metal-cpp */,
 			);
 			name = gpu_primitives;
 			packageProductDependencies = (
@@ -129,11 +159,11 @@
 		C52C32112F02FBDD00EC88DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -179,23 +209,33 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_ENABLE_MODULES = YES;
 				MTL_FAST_MATH = YES;
+				MTL_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/metal-cpp/** $(PROJECT_DIR)/metal-cpp-extensions/**";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
 			};
 			name = Debug;
 		};
 		C52C32122F02FBDD00EC88DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -235,31 +275,63 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_MODULES = YES;
 				MTL_FAST_MATH = YES;
+				MTL_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/metal-cpp/** $(PROJECT_DIR)/metal-cpp-extensions/**";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
 			};
 			name = Release;
 		};
 		C52C32142F02FBDD00EC88DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J78RD5VA6M;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
+				MTL_ENABLE_MODULES = YES;
+				MTL_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/metal-cpp/** $(PROJECT_DIR)/metal-cpp-extensions/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
 			};
 			name = Debug;
 		};
 		C52C32152F02FBDD00EC88DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J78RD5VA6M;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
+				MTL_ENABLE_MODULES = YES;
+				MTL_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/metal-cpp/** $(PROJECT_DIR)/metal-cpp-extensions/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/metal-cpp/**",
+					"$(PROJECT_DIR)/metal-cpp-extensions/**",
+				);
 			};
 			name = Release;
 		};
